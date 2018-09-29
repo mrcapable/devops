@@ -1,0 +1,8 @@
+ssh-keygen -t rsa
+--generates the ssh key. press enter, enter to accept the default setting.
+
+ssh-copy-id root@<destination server>
+--this copies the public key onto the server u are trying to connect to
+
+ssh obello@<destination server>
+--test the passwordless access where obello is the username

@@ -1,0 +1,10 @@
+fix to dropped ssh connection
+
+sudo nano /etc/ssh/ssh_config
+-- modify the ssh_config file on the destination server
+-- add the following lines
+
+ServerAliveInterval 60
+ServerAliveCountMax 10
+
+--https://unix.stackexchange.com/questions/3026/what-options-serveraliveinterval-and-clientaliveinterval-in-sshd-config-exac

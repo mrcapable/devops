@@ -27,7 +27,7 @@ This is to create the database for wordpress
 --CREATE USER wordpressuser@localhost IDENTIFIED BY 'wordpressdb';
 This is to create the username and password to access the database
 
---GRANT ALL PRIVILEGES ON wordpressdb.* TO slimboi@localhost;
+--GRANT ALL PRIVILEGES ON wordpressdb.* TO wordpressuser@localhost;
 This is to give the user all privileges on the db
 
 --FLUSH PRIVILEGES;

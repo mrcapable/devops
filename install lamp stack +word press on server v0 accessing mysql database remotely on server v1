@@ -1,6 +1,5 @@
-install lamp stack +word press on server v0 accessing mysql database remotely on server v1
 
-first install mysql database on v1(with ip address 10.0.0.5)
+Step1. Install mysql database on v1(with ip address 10.0.0.5)
 --sudo apt-get install mysql-server*
 
 confirm mysql is running
@@ -23,3 +22,33 @@ check what port mysql is running on
 open firewall port on v1 to allow connections on port 3306
 --iptables -A INPUT -i eth0 -p tcp -m tcp --dport 3306 -j ACCEPT
 
+
+Step2. Install mysql client on server v0 (ip address 10.0.0.4)
+--sudo apt-get install mysql-client*
+
+test database connection( from client v0 to database server on v1)
+--mysql -u wp -h 10.0.0.5 -p
+
+Step3. Install Apache on v0 (ip address 10.0.0.4)
+-- apt install apache2
+
+check if apache is install and running
+--systemctl status apache2
+
+open HTTP and HTTPS ports for client connections
+-- ufw allow 80/tcp
+-- ufw allow 443/tcp
+-- ufw reload
+
+confirm apache is running
+-- type http://ip address on a browser, u shoul see the apache page
+
+Step4. Install PHP on server v0 (ip address 10.0.0.4)
+-- apt install php php-common php-mysql php-gd php-cli 
+
+test if php is working
+-- echo "<?php phpinfo(); ?>" | sudo tee /var/www/html/info.php
+-- type http://ip address/info.php
+
+
+Step5. Install wordpress

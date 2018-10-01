@@ -1,0 +1,25 @@
+install lamp stack +word press on server v0 accessing mysql database remotely on server v1
+
+first install mysql database on v1(with ip address 10.0.0.5)
+--sudo apt-get install mysql-server*
+
+confirm mysql is running
+--sudo systemctl status mysql
+
+connect to mysql 
+--mysql -u root
+
+create wordpress database
+--create database wordpress
+
+create wordpress user
+--create user wp identified by wp;
+--grant all privileges on wordpress.* to wp;
+--exit
+
+check what port mysql is running on
+--netstat -lnp|grep mysql
+
+open firewall port on v1 to allow connections on port 3306
+--iptables -A INPUT -i eth0 -p tcp -m tcp --dport 3306 -j ACCEPT
+

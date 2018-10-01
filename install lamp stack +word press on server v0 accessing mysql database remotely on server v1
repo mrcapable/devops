@@ -52,3 +52,25 @@ test if php is working
 
 
 Step5. Install wordpress
+
+Download the latest wordpress version.
+--wget http://wordpress.org/latest.zip
+
+Unzip downloaded files
+--unzip -q latest.zip -d /var/www/html/
+
+Change owner of files and directories
+--chown -R www-data:www-data /var/www/html/wordpress
+
+full permissions for the owner and read and execute permission for others.
+--chmod -R 755 /var/www/html/wordpress
+
+This helps to create the directories, and the -p is to ensure it doesn't throw up errors if any of the directories already exists.
+--mkdir -p /var/www/html/wordpress/wp-content/uploads
+
+This is to change ownership of the file and directories just created above
+--chown -R www-data:www-data /var/www/html/wordpress/wp-content/uploads
+
+Get to the wordpress <ip address>/wordpress. Then input the information i configured on the terminal to connect to my wordpressdb.
+
+Then i log into my wordpress admin area using the username and password.

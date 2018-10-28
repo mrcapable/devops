@@ -1,0 +1,18 @@
+#!/bin/bash
+read -p 'Enter Number of Folders: ' cf
+echo 'Enter Folder Names'
+read -a nf
+k=0
+
+while [ $k -lt $cf ]
+do
+if [  -d "/var/development/${nf[k]}" ]
+then
+        echo "The folder /var/development/${nf[k]} already exists"
+else
+        mkdir "/var/development/${nf[k]}"
+
+fi
+((k++))
+
+done

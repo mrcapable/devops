@@ -1,6 +1,5 @@
-# Terraform
 # Create a new ec2 instance with my named ami olalinux image 
-#  on a t2.micro node with an AWS Tag naming it "v10" into an existing subnet
+#  on a t2.micro node with an AWS Tag naming it "v10"
 
 # Variables
 variable "aws_access_key"  {}
@@ -39,12 +38,12 @@ resource "aws_instance" "Vm" {
   instance_type = "t2.micro"
   key_name      = "${var.key_name}"
   associate_public_ip_address = true
-  #security_groups = "sg-0f69b018add8ed5e6"
-  #vpc_security_group_ids = ["sg-0ca20beb341f40549","sg-0f69b018add8ed5e6","sg-0814b6e77e333a7a8","sg-06b384b586eb6882f","sg-048310d37d4d554ed"]
+  security_groups = ["sg-06b384b586eb6882f","sg-048310d37d4d554ed"]
   subnet_id = "subnet-0e07c66d6a79a486b"
   connection {
       user      = "ec2-user"
       private_key = "${file(var.private_key_path)}"
+  
   
   tags = {
     Name = "v10"
